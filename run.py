@@ -111,6 +111,7 @@ if __name__ == "__main__":
                 mask_shape=[256, 256],
                 run_mode=run_mode,
                 target_gen_func=[target_gen_func, {}],
+                setup_augmentor=setup_augmentor,
             )
 
         run_kwargs = {

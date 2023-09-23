@@ -154,7 +154,7 @@ class RunManager(object):
 
             # net_desc = torch.jit.script(net_desc)
             net_desc = DataParallel(net_desc)
-            net_desc = net_desc.to("cuda")
+            net_desc = net_desc
             # print(net_desc) # * dump network definition or not?
             optimizer, optimizer_args = net_info["optimizer"]
             optimizer = optimizer(net_desc.parameters(), **optimizer_args)
