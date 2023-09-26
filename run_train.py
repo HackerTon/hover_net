@@ -62,7 +62,7 @@ class RunManager(object):
             batch_size=batch_size,
             shuffle=run_mode == "train",
             drop_last=run_mode == "train",
-            worker_init_fn=worker_init_fn,
+            # worker_init_fn=worker_init_fn,
         )
         return dataloader
 

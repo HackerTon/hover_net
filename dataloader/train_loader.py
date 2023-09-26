@@ -90,14 +90,14 @@ class FileLoader(torch.utils.data.Dataset):
         # instance ID map and type map
         ann = np.array(self.anns[idx]).astype("int32")
 
-        # if self.shape_augs is not None:
-        #     shape_augs = self.shape_augs.to_deterministic()
-        #     img = shape_augs.augment_image(img)
-        #     ann = shape_augs.augment_image(ann)
+        if self.shape_augs is not None:
+            shape_augs = self.shape_augs.to_deterministic()
+            img = shape_augs.augment_image(img)
+            ann = shape_augs.augment_image(ann)
 
-        # if self.input_augs is not None:
-        #     input_augs = self.input_augs.to_deterministic()
-        #     img = input_augs.augment_image(img)
+        if self.input_augs is not None:
+            input_augs = self.input_augs.to_deterministic()
+            img = input_augs.augment_image(img)
 
         img = cropping_center(img, self.input_shape)
         feed_dict = {"img": img}
