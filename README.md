@@ -26,6 +26,15 @@ challenge, we use the `FOLD_IDX=0`.
 1. Run `infer.ipynb` using vscode.
 2. Run all the code blocks inside of `infer.ipynb`.
 
+## Description about the dataset
+The dataset named patch-level lizard dataset container 4981 non-overlapping images of size 256x256 in the following format.
+
+The RGB images and segmentation/classification maps are each stored as a single numpy array. The RGB image array has dimensions 4981x256x256x3, whereas the segmentation & classification map array has dimensions 4981x256x256x2. Here, the first channel is the instance segmentation map and the second channel is the classification map. For the nuclei counts, we provide a single csv file, where each row corresponds to a given patch and the columns determine the counts for each type of nucleus. The row ordering is in line with the order of patches within the numpy files.
+
+![](docs/dataset_format.png)
+
+
+
 ## Hyper-parameters
 
 The following files contain the hyper-paramters for training the HoVer-Net
