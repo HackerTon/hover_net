@@ -13,9 +13,9 @@ This branch is dedicated to training the HoVer-Net for the [CoNIC challenge](htt
 
 1. Setup the enviroment as instructed above.
 2. Download [Pytorch ImageNet ResNet50](https://download.pytorch.org/models/resnet50-0676ba61.pth) and put
-it under `exp_output/local/`.
-3. Download the data from the [CoNIC challenge](https://conic-challenge.grand-challenge.org/)
-4. Extract the data into the `exp_output/local/data` folder.
+it under `exp_output/local/`. The `exp_output/local/` should contain `resnet50-0676ba61.pth`.
+3. Download the data from the Patch-Level Lizard Dataset [CoNIC challenge](https://conic-challenge.grand-challenge.org/) 
+4. Extract the data into the `exp_output/local/data` folder. The `exp_output/local/data/` directory should contain `images.npy`, `labels.npy` and `patch_info_csv`.
 5. Run `python generate_split.py` to generate a number
 of training and validation subsets. For the baseline in the
 challenge, we use the `FOLD_IDX=0`.
