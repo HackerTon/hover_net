@@ -21,7 +21,7 @@ of training and validation subsets. For the baseline in the
 challenge, we use the `FOLD_IDX=0`.
 6. Run `python run.py --gpu 0`
 
-# To inferencing
+# To inference
 
 1. Run `infer.ipynb` using vscode.
 2. Run all the code blocks inside of `infer.ipynb`.
