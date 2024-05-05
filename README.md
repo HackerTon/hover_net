@@ -3,8 +3,8 @@
 
 ## Set Up Environment
 
-1. `conda env create -f environment.yml`
-2. `conda activate hovernet`
+1. `mamba env create -f environment.yml`
+2. `mamba activate hovernet`
 3. `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118`
 
 # Training HoVer-Net for CoNIC Challenge
