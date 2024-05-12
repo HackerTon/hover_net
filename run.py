@@ -10,8 +10,10 @@ import yaml
 from dataloader.train_loader import FileLoader
 from misc.utils import mkdir, recur_find_ext, rm_n_mkdir, rmdir
 
+import numpy as np
+np.bool = np.bool_
+# Special override in case numpy has been upgraded to latest
 
-####
 def load_yaml(path):
     with open(path) as fptr:
         info = yaml.full_load(fptr)
