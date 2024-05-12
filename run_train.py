@@ -9,6 +9,7 @@ import torch
 import yaml
 from tensorboardX import SummaryWriter
 from torch.nn import DataParallel
+import platform
 
 # TODO: switch to DistributedDataParallel
 from torch.utils.data import DataLoader
@@ -56,14 +57,25 @@ class RunManager(object):
         )
         logging.info(f"Dataset {run_mode} - {subset_name} : {len(input_dataset)}")
 
-        dataloader = DataLoader(
-            input_dataset,
-            num_workers=nr_procs,
-            batch_size=batch_size,
-            shuffle=run_mode == "train",
-            drop_last=run_mode == "train",
-            # worker_init_fn=worker_init_fn,
-        )
+        if platform.system() == "Linux":
+            dataloader = DataLoader(
+                input_dataset,
+                num_workers=nr_procs,
+                batch_size=batch_size,
+                shuffle=run_mode == "train",
+                drop_last=run_mode == "train",
+                worker_init_fn=worker_init_fn,
+            )
+        else:
+            dataloader = DataLoader(
+                input_dataset,
+                num_workers=0,
+                batch_size=batch_size,
+                shuffle=run_mode == "train",
+                drop_last=run_mode == "train",
+                worker_init_fn=worker_init_fn,
+            )
+            
         return dataloader
 
     ####
