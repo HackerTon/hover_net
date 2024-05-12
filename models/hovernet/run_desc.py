@@ -329,11 +329,11 @@ def proc_valid_step_output(raw_data, num_types=None):
     pred_hv = np.array([pred_hv[idx] for idx in selected_idx])
     viz_raw_data = {"img": imgs, "np": (true_np, prob_np), "hv": (true_hv, pred_hv)}
 
-    if num_types is not None:
-        true_tp = np.array([true_tp[idx] for idx in selected_idx])
-        pred_tp = np.array([pred_tp[idx] for idx in selected_idx])
-        viz_raw_data["tp"] = (true_tp, pred_tp)
-    viz_fig = viz_step_output(viz_raw_data, num_types)
-    track_dict["image"]["output"] = viz_fig
+    # if num_types is not None:
+    #     true_tp = np.array([true_tp[idx] for idx in selected_idx])
+    #     pred_tp = np.array([pred_tp[idx] for idx in selected_idx])
+    #     viz_raw_data["tp"] = (true_tp, pred_tp)
+    # viz_fig = viz_step_output(viz_raw_data, num_types)
+    # track_dict["image"]["output"] = viz_fig
 
     return track_dict

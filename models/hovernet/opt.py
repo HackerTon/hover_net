@@ -131,7 +131,7 @@ def get_config(
                     Events.EPOCH_COMPLETED: [
                         TrackLr(),
                         PeriodicSaver(),
-                        VisualizeOutput(viz_step_output),
+                        # VisualizeOutput(viz_step_output),
                         LoggingEpochOutput(),
                         TriggerEngine("infer"),
                         ScheduleLr(),
