@@ -52,12 +52,13 @@ class RunManager(object):
     def _get_datagen(self, batch_size, run_mode, subset_name, nr_procs=0):
         nr_procs = nr_procs if not self.debug else 0
 
-        input_dataset = self.create_dataset(
-            run_mode=run_mode, subset_name=subset_name, setup_augmentor=nr_procs == 0
-        )
-        logging.info(f"Dataset {run_mode} - {subset_name} : {len(input_dataset)}")
-
         if platform.system() == "Linux":
+            input_dataset = self.create_dataset(
+                run_mode=run_mode,
+                subset_name=subset_name,
+                setup_augmentor=False,
+            )
+            logging.info(f"Dataset {run_mode} - {subset_name} : {len(input_dataset)}")
             dataloader = DataLoader(
                 input_dataset,
                 num_workers=nr_procs,
@@ -67,15 +68,21 @@ class RunManager(object):
                 worker_init_fn=worker_init_fn,
             )
         else:
+            input_dataset = self.create_dataset(
+                run_mode=run_mode,
+                subset_name=subset_name,
+                setup_augmentor=True,
+            )
+            logging.info(f"Dataset {run_mode} - {subset_name} : {len(input_dataset)}")
             dataloader = DataLoader(
                 input_dataset,
                 num_workers=0,
                 batch_size=batch_size,
                 shuffle=run_mode == "train",
                 drop_last=run_mode == "train",
-                worker_init_fn=worker_init_fn,
+                # worker_init_fn=worker_init_fn,
             )
-            
+
         return dataloader
 
     ####
