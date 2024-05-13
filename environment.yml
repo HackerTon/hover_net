@@ -6,6 +6,8 @@ dependencies:
   - python
   - pip
   - ipykernel
+  - tqdm
+  - pyarrow
   # remove openslide for window because you need to install manually
   # - openslide
   - pip:
