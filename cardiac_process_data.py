@@ -45,7 +45,7 @@ class DatasetProcessor:
             engine="pyarrow",
             index_col=0,
         )
-        self.images = directory.glob("chestxray/images_*/**/*.png")
+        self.images = [x for x in directory.glob("chestxray/images_*/**/*.png")]
 
     @staticmethod
     def resize_image(image, shape=[512, 512]):
@@ -128,7 +128,6 @@ class DatasetProcessor:
         instance_map = torch.zeros_like(masks[0])
         for i in range(3):
             instance_map += (masks[i] == 255) * (i + 1)
-
         return torch.stack([instance_map, class_map], dim=-1)
 
     @staticmethod
@@ -225,7 +224,7 @@ class DatasetProcessor:
         output_image_path = Path(output_directory)
         if not output_image_path.exists():
             output_image_path.mkdir(parents=True)
-        images = [x for x in self.images]
+        images = self.images
         length = len(images) if length is None else length
 
         print("Start Generating")
@@ -241,7 +240,7 @@ class DatasetProcessor:
         output_image_path = Path(output_directory)
         if not output_image_path.exists():
             output_image_path.mkdir(parents=True)
-        images = [x for x in self.images]
+        images = self.images
         length = len(images) if length is None else length
 
         print("Start Generating")
