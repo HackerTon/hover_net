@@ -8,8 +8,8 @@ if __name__ == "__main__":
     valid_indices = indices[80:]
     splits = [
         {
-            "train": [train_indices],
-            "valid": [valid_indices],
+            "train": train_indices,
+            "valid": valid_indices,
         }
     ]
     joblib.dump(splits, "splits.dat")
