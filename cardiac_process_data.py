@@ -230,13 +230,12 @@ class DatasetProcessor:
 
         print("Start Generating")
 
-        dataset_images = np.zeros([length, 3, 256, 256], dtype=np.uint8)
+        dataset_images = np.zeros([length, 256, 256, 3], dtype=np.uint8)
         for idx, image_path in enumerate(tqdm(images[:length], total=len(images))):
             image = read_image(str(image_path), ImageReadMode.RGB)
             image = DatasetProcessor.resize_image(image, shape=[256, 256])
-            dataset_images[idx] = image
+            dataset_images[idx] = image.permute([1, 2, 0])
         np.save(str(output_image_path.joinpath("images")), dataset_images)
-        
 
     def process_label(self, output_directory: str, length=None):
         output_image_path = Path(output_directory)
