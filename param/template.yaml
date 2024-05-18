@@ -11,7 +11,7 @@ loader_kwargs:
   # infer: { 'batch_size' : 6, 'nr_procs' : 8}
   # phase 2
   train: { 'batch_size' : 1, 'nr_procs' : 4}
-  infer: { 'batch_size' : 1, 'nr_procs' : 4}
+  infer: { 'batch_size' : 2, 'nr_procs' : 4} # batch_size for infer must be at least 2 because accumulation will fail
 
 model_kwargs:
   num_types: 7  # conic
