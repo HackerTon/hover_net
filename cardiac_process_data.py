@@ -271,8 +271,8 @@ class DatasetProcessor:
 
 def process_images(path, output_path):
     train_images_processor = DatasetProcessor(path=path, is_train=True)
-    train_images_processor.process_image(output_directory=output_path)
-    train_images_processor.process_label(output_directory=output_path)
+    train_images_processor.process_image(output_directory=output_path, length=100)
+    train_images_processor.process_label(output_directory=output_path, length=100)
 
 
 if __name__ == "__main__":
