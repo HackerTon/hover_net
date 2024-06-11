@@ -70,6 +70,7 @@ class DatasetProcessor:
             [[[1, 2, 3, 4, 5, 0]]]
         ).repeat(256, axis=0).repeat(256, axis=1)
         class_map = class_map[..., :-1].sum(axis=-1)
+        class_map = np.clip(class_map, 0, 4)
         return np.stack([instance_map, class_map], axis=-1)
 
         # # Generate mask for background
