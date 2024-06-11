@@ -14,5 +14,5 @@ loader_kwargs:
   infer: { 'batch_size' : 2, 'nr_procs' : 4} # batch_size for infer must be at least 2 because accumulation will fail
 
 model_kwargs:
-  num_types: 7  # conic
+  num_types: 6 # conic
   pretrained_backbone: 'exp_output/local/resnet50-0676ba61.pth'

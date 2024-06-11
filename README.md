@@ -6,7 +6,7 @@
 0. Install miniforge
 1. `mamba env create -f environment.yml`
 2. `mamba activate hovernet`
-3. `mamba install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia`
+3. `mamba install pytorch torchvision torchaudio pytorch-mps=12.1 -c pytorch -c nvidia`
 
 # Training HoVer-Net for CoNIC Challenge
 
