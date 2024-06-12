@@ -8,6 +8,7 @@ dependencies:
   - ipykernel
   - tqdm
   - pyarrow
+  - django
   # remove openslide for window because you need to install manually
   # - openslide
   - pip:

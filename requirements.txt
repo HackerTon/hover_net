@@ -16,3 +16,5 @@ tqdm
 numpy
 ruamel.yaml
 pyyaml
+django-tailwind
+django_browser_reload
